@@ -1,0 +1,8 @@
+<%= link_to "投稿画面へ", new_shop_path %>
+<% @shops.each do |shop| %>
+  <p>
+    <!-- 以下の2行のコードを追加 -->
+    <%= shop.date %>
+    <%= shop.name %>
+  </p>
+<% end %>
