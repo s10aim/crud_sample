@@ -15,6 +15,15 @@ class ShopsController < ApplicationController
     Shop.create(shop_params)
   end
 
+  def edit
+    @shop = Shop.find(params[:id])
+  end
+
+  def update
+    shop = Shop.find(params[:id])
+    shop.update!(shop_params)
+  end
+
   def destroy
     shop = Shop.find(params[:id])
     shop.destroy
