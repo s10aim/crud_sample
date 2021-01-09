@@ -1,7 +1,2 @@
-<p>更新</p>
-<%= form_with model: @shop, local: true do |f| %>
-  <p>名前：<%= f.text_field :name %></p>
-  <p>日付：<%= f.date_select :date %></p>
-  <p>内容：<%= f.text_field :content %></p>
-  <%= f.submit "送信" %>
-<% end %>
+<h1 style="font-size: 24px;">更新</h1>
+<%= render 'form', button_value: '更新' %>

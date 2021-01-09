@@ -1,10 +1,11 @@
 class ShopsController < ApplicationController
+  before_action :set_shop, only: %i[show edit update destroy]
+
   def index
     @shops = Shop.all
   end
 
   def show
-    @shop = Shop.find(params[:id])
   end
 
   def new
@@ -12,24 +13,28 @@ class ShopsController < ApplicationController
   end
 
   def create
-    Shop.create(shop_params)
+    shop = Shop.create!(shop_params)
+    redirect_to shop
   end
 
   def edit
-    @shop = Shop.find(params[:id])
   end
 
   def update
-    shop = Shop.find(params[:id])
-    shop.update!(shop_params)
+    @shop.update!(shop_params)
+    redirect_to @shop
   end
 
   def destroy
-    shop = Shop.find(params[:id])
-    shop.destroy
+    @shop.destroy!
+    redirect_to root_path
   end
 
   private
+
+  def set_shop
+    @shop = Shop.find(params[:id])
+  end
 
   def shop_params
     params.require(:shop).permit(:name, :date, :content)

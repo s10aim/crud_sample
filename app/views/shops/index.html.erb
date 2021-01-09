@@ -1,7 +1,7 @@
-<%= link_to "投稿画面へ", new_shop_path %>
-<% @shops.each do |shop| %>
+<% @shops.each.with_index(1) do |shop, i| %>
   <p>
     <!-- 以下の2行のコードを追加 -->
+    <%= "#{i}." %>
     <%= shop.date %>
     <%= shop.name %>
     <%= link_to "詳細", shop %>
