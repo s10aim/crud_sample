@@ -14,7 +14,7 @@ class ShopsController < ApplicationController
 
   def create
     shop = Shop.create!(shop_params)
-    redirect_to shop
+    redirect_to shop, notice: "投稿しました"
   end
 
   def edit
@@ -22,12 +22,12 @@ class ShopsController < ApplicationController
 
   def update
     @shop.update!(shop_params)
-    redirect_to @shop
+    redirect_to @shop, notice: "更新しました"
   end
 
   def destroy
     @shop.destroy!
-    redirect_to root_path
+    redirect_to root_path, alert: "削除しました"
   end
 
   private
