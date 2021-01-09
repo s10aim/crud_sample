@@ -13,7 +13,8 @@ class ShopsController < ApplicationController
   end
 
   def create
-    Shop.create(shop_params)
+    shop = Shop.create!(shop_params)
+    redirect_to shop
   end
 
   def edit
@@ -21,10 +22,12 @@ class ShopsController < ApplicationController
 
   def update
     @shop.update!(shop_params)
+    redirect_to @shop
   end
 
   def destroy
-    @shop.destroy
+    @shop.destroy!
+    redirect_to root_path
   end
 
   private
